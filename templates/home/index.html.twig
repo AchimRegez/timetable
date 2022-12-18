@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Stationboard ongoing /</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100&display=swap" rel="stylesheet">
+    
+</head>
+
+
+{% block body %}
+
+<h1 style="background-color:#00a1e9; color:white; font-family:'Fira Sans Condensed', sans-serif;">ongoing /</h1>
+<table style="float:left;width:49.5%; background-color:#d9d9d9;" border="0">
+    <tr>
+    <td>{{data.stationRigiblick.station.name}}</td>
+    </tr>  
+    {% for group in data.stationRigiblick.stationboard %}
+    <tr>
+    <td style="background-color:white">{{group.calculatedDeparture}} - Richtung {{group.to}}
+    {% if group.stop.delay > 0 %}
+    <span style="color:red">
+    - {{group.stop.delay}} min verspätet
+    </span>
+    {% endif %}
+    </td>
+    </tr>
+    {% endfor %} 
+</table>
+
+
+<table style="float:left;width:49.5%; background-color:#d9d9d9;" border="0">
+    <tr>
+    <td>{{data.stationRiedstrasse.station.name}}</td>
+    </tr>  
+    {% for group2 in data.stationRiedstrasse.stationboard %}
+    <tr>
+    <td style="background-color:white">{{group2.calculatedDeparture}} - Richtung {{group2.to}} 
+    {% if group2.stop.delay > 0 %}
+    <span style="color:red">
+    - {{group2.stop.delay}} min verspätet
+    </span>
+    {% endif %}
+    </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
